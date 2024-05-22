@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-html,
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+* {
+  /* padding: 0; */
+  margin: 0;
+}
+/* html,
 body,
 #root {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Roboto', sans-serif;
+} */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0px;
+}
+nav {
+  width: 100vw;
+  height: 30px;
+  background-color: rgb(190, 164, 147);
 }
 
 .center {
@@ -32,17 +46,17 @@ body,
 }
 
 .body {
-    margin: 15px auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    gap: 16px; /* Optional: Adjust the gap between grid items as needed */
-    width: 100%;
-  }
+  margin: 15px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  gap: 16px; /* Optional: Adjust the gap between grid items as needed */
+  width: 100%;
+}
 
 .intro .notes {
   display: flex !important;
   flex-direction: column !important;
-  margin-left: 0
+  margin-left: 0;
 }
 
 /* 
