@@ -3,17 +3,17 @@ import axios from 'axios';
 import '../Styles/Homepage.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SearchBar from '../Components/SearchBar';
 
 const HomePage = () => {
   const [shops, setShops] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const getSavedShops = async () => {
     console.log('Retrieving saved shops');
     try {
-      const response = await axios.get(
-        'Brew/OrderCoffee'
-      );
+      const response = await axios.get('Brew/OrderCoffee');
       console.log('Response is', response.data);
       setShops(response.data);
     } catch (err) {
@@ -25,12 +25,16 @@ const HomePage = () => {
     getSavedShops();
   }, []);
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className="center">
       <h1>WorkBrew</h1>
       <h3>Your favorite remote workspaces, all in one place!</h3>
       <h4>Your Saved Locations</h4>
-      <div className="shop-list">
+      <div className="cards-container">
         {shops.map((shop) => (
           <div
             key={shop.id}

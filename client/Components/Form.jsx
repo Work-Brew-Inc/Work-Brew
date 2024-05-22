@@ -3,24 +3,29 @@ import Question from './Question';
 import { useState } from 'react';
 import CustomText from './TextField';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import '../Styles/Form.css';
 
 const Form = () => {
   const [formData, setFormData] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (label, value) => {
+    const formattedLabel = label.toLowerCase().replace(/\s+/g, '_');
     setFormData((prev) => ({
       ...prev,
-      [label]: value,
+      [formattedLabel]: value,
     }));
     console.log(formData);
   };
 
   const handleSubmit = async () => {
+    setIsSubmitted(true);
     console.log('data is', formData);
     try {
-      const response = await axios.post('http://localhost:3000/Brew/BrewCoffee', formData);
+      const response = await axios.post('Brew/BrewCoffee', formData);
       console.log('Response', response.data);
     } catch (err) {
       console.log('Error in submitting form:', err);
@@ -35,9 +40,9 @@ const Form = () => {
       options: ['Morning', 'Lunch', 'Afternoon', 'Evening'],
     },
     { label: 'Wifi', options: ['None', 'Spotty', 'Reliable', 'High-Speed'] },
-    { label: 'Noise Level', options: ['Quiet', 'Ambient', 'Varies', 'Loud'] },
+    { label: 'Noise', options: ['Quiet', 'Ambient', 'Varies', 'Loud'] },
     {
-      label: 'Food Available',
+      label: 'Products',
       options: ['Drinks Only', 'Snacks/Pastries', 'Meals'],
     },
     { label: 'Price', options: ['$', '$$', '$$$', '$$$$'] },
@@ -45,9 +50,9 @@ const Form = () => {
     { label: 'Ergonomics', options: ['Poor', 'Standard', 'Comfortable'] },
     { label: 'Standing Tables', options: ['Yes', 'No'] },
     { label: 'Bathroom', options: ['Yes', 'No'] },
-    { label: 'Temperature Control', options: ['Poor', 'Decent', 'Good'] },
+    { label: 'Temperature', options: ['Poor', 'Decent', 'Good'] },
     {
-      label: 'Accessibility Features',
+      label: 'Accessibility',
       options: [
         'None',
         'Ramp',
@@ -59,7 +64,6 @@ const Form = () => {
     { label: 'Parking', options: ['None', 'Free', 'Paid', 'Paid Lot'] },
     { label: 'Notes', options: '' },
   ];
-
   const intro = [];
   const body = [];
   const notes = [];
@@ -115,6 +119,8 @@ const Form = () => {
             sx={{ width: '50%', mt: '20px' }}
             variant="contained"
             onClick={() => handleSubmit()}
+            color={isSubmitted ? "success" : undefined}
+            disabled={isSubmitted}
           >
             Submit
           </Button>

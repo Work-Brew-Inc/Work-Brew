@@ -13,6 +13,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const isDev = process.env.NODE_ENV === 'development';
 
+// enable parsing req
+app.use(express.json());
+
 if (isDev) {
   const webpackConfig = require('../webpack.config.js');
   const compiler = webpack(webpackConfig);
@@ -42,9 +45,6 @@ if (isDev) {
   });
 }
 
-// enable parsing req
-app.use(express.json());
-
 //Catch all route handler
 app.use('*', (req, res) => {
   res.status(404).send('Page not found');
@@ -65,8 +65,6 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-
 
 // supabase
 //   .from("coffee_shop")
