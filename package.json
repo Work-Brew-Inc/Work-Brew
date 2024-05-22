@@ -14,7 +14,12 @@
 	"author": "ljn16, AidenCarere, ChrisR0892, JoseSanchez1996, InvectivusTaco",
 	"license": "ISC",
 	"dependencies": {
+		"@emotion/react": "^11.11.4",
+		"@emotion/styled": "^11.11.5",
+		"@fontsource/roboto": "^5.0.13",
+		"@mui/material": "^5.15.18",
 		"@supabase/supabase-js": "^2.43.2",
+		"axios": "^1.7.2",
 		"concurrently": "^8.2.2",
 		"express": "^4.19.2",
 		"jest": "^27.5.1",
