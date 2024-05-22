@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.shopForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.intro .body .notes {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.body {
+    margin: 15px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 16px; /* Optional: Adjust the gap between grid items as needed */
+    width: 100%;
+  }
+
+.intro .notes {
+  display: flex !important;
+  flex-direction: column !important;
+  margin-left: 0
+}
+
+/* 
+#question {
+  margin-top: 10px;
+} */
