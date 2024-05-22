@@ -5,11 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node server/server.js",
-		"dev": "webpack serve --config webpack.config.js --hot",
+		"dev": "concurrently \"npm run server\" \"npm run webpack\"",
+		"server": "nodemon server/server.js",
+		"webpack": "webpack serve --config webpack.config.js --hot",
 		"build": "webpack --config webpack.config.js"
 	},
 	"keywords": [],
-	"author": "LJN16, AidenCarere, ChrisR0892, JoseSanchez1996, InvectivusTaco",
+	"author": "ljn16, AidenCarere, ChrisR0892, JoseSanchez1996, InvectivusTaco",
 	"license": "ISC",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.43.2",

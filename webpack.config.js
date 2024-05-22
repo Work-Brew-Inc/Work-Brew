@@ -51,6 +51,12 @@ module.exports = {
     devServer: {
         hot: true,
         historyApiFallback: true,
-        port: 3000,
-    },
+        port: 3001,
+        proxy: [
+            {
+              context: ['/Brew'],
+              target: 'http://localhost:3000',
+            },
+        ],
+    }
 }
