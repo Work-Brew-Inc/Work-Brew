@@ -26,7 +26,7 @@ FindCoffeeShops.findNearbyCoffeeShops = async (latitude, longitude) => {
     const data = await response.json();
     return data.elements
       .map((shop) => ({
-        name: shop.tags.name || 'Unknown',
+        name: shop.tags.name || "Unknown",
         latitude: shop.lat,
         longitude: shop.lon,
         distance: FindCoffeeShops.calculateDistance(
@@ -50,7 +50,7 @@ FindCoffeeShops.getUsersLocation = async (req, res, next) => {
   if (!lat || !lon) {
     return res
       .status(400)
-      .json({ error: 'Latitude and Longitude are required' });
+      .json({ error: "Latitude and Longitude are required" });
   }
 
   try {

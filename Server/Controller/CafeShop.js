@@ -21,41 +21,41 @@ CafeShop.BrewingCoffee = async (req, res, next) => {
     accessibility,
     location,
   } = req.body;
-  try{
-  const { data, error } = await supabase
-    .from("coffee_shop")
-    .insert({
-      id,
-      name,
-      distance,
-      price,
-      products,
-      time_visited,
-      wifi,
-      noise,
-      outlets,
-      ergononmics,
-      standing_table,
-      bathrooms,
-      temperature,
-      parking,
-      accessibility,
-      location,
-    })
-    .select("*");
+  try {
+    const { data, error } = await supabase
+      .from("coffee_shop")
+      .insert({
+        id,
+        name,
+        distance,
+        price,
+        products,
+        time_visited,
+        wifi,
+        noise,
+        outlets,
+        ergononmics,
+        standing_table,
+        bathrooms,
+        temperature,
+        parking,
+        accessibility,
+        location,
+      })
+      .select("*");
 
-  if (error) {
-    console.log(error);
-    return next({
-      log: "problem in CafeShop, we ran out of Coffee Beans",
-      message: { err: error },
-    });
-  }
+    if (error) {
+      console.log(error);
+      return next({
+        log: "problem in CafeShop, we ran out of Coffee Beans",
+        message: { err: error },
+      });
+    }
 
-  res.locals.Coffee = data[0];
+    res.locals.Coffee = data[0];
 
-  next();
-  } catch(error) {
+    next();
+  } catch (error) {
     console.error("Unexpected error in Brewing Coffee:", error);
     return next(error);
   }
@@ -109,15 +109,15 @@ CafeShop.DumpCoffee = async (req, res, next) => {
     const { data, error } = await supabase
       .from("coffee_shop")
       .delete()
-      .eq('id', rowId)
+      .eq("id", rowId);
 
-      if (error) {
-        console.log("Can't dump perfectly good coffee");
-        return next({
-          log: "Failed to dump coffee",
-          message: { error },
-        });
-      };
+    if (error) {
+      console.log("Can't dump perfectly good coffee");
+      return next({
+        log: "Failed to dump coffee",
+        message: { error },
+      });
+    }
 
     next();
   } catch (error) {

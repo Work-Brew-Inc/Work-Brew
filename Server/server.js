@@ -30,15 +30,15 @@ if (isDev) {
   // router to handle requests
   app.use('/Brew', router);
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/static/index.html'));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/static/index.html"));
   });
 } else {
   // Serve static files from 'dist' directory in production
   app.use(express.static(path.resolve(__dirname, '../dist')));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist/index.html"));
   });
 }
 
