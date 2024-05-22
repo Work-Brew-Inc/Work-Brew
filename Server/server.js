@@ -42,14 +42,14 @@ if (isDev) {
 
   app.use(express.static("../dist"));
 
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/static/index.html"));
   });
 } else {
   // Serve static files from 'dist' directory in production
   app.use(express.static(path.resolve(__dirname, "../dist")));
 
-  app.get("*", (req, res) => {
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist/index.html"));
   });
 }

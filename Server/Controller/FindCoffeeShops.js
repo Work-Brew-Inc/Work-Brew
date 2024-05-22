@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 const FindCoffeeShops = {};
 
 FindCoffeeShops.calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -26,13 +24,20 @@ FindCoffeeShops.findNearbyCoffeeShops = async (latitude, longitude) => {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    return data.elements.map(shop => ({
-      name: shop.tags.name || "Unknown",
-      latitude: shop.lat,
-      longitude: shop.lon,
-      distance: FindCoffeeShops.calculateDistance(latitude, longitude, shop.lat, shop.lon).toFixed(2),
-      tags: shop.tags,
-    })).slice(0, 5); // Limit to 5 results
+    return data.elements
+      .map((shop) => ({
+        name: shop.tags.name || "Unknown",
+        latitude: shop.lat,
+        longitude: shop.lon,
+        distance: FindCoffeeShops.calculateDistance(
+          latitude,
+          longitude,
+          shop.lat,
+          shop.lon
+        ).toFixed(2),
+        tags: shop.tags,
+      }))
+      .slice(0, 5); // Limit to 5 results
   } catch (error) {
     console.error("Error:", error);
     throw error;
@@ -43,7 +48,9 @@ FindCoffeeShops.getUsersLocation = async (req, res, next) => {
   const { lat, lon } = req.query;
 
   if (!lat || !lon) {
-    return res.status(400).json({ error: "Latitude and Longitude are required" });
+    return res
+      .status(400)
+      .json({ error: "Latitude and Longitude are required" });
   }
 
   try {
