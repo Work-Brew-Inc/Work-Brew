@@ -1,0 +1,34 @@
+.shop-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.shop-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  width: calc(
+    66.666% - 40px
+  ); /* Adjust width to fit one and a half cards in a row */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .shop-card {
+    width: calc(
+      50% - 40px
+    ); /* Adjust to fit two cards in a row for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-card {
+    width: calc(
+      100% - 40px
+    ); /* Adjust to fit one card in a row for small screens */
+  }
+}
