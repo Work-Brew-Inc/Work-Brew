@@ -27,7 +27,7 @@ router.get("/WakeMeUp", FindCoffeeShops.getUsersLocation, (req, res) => {
   res.status(200).json(res.locals.coffeeShops);
 });
 
-router.get("/speed", user.speed, (req, res) => {
+router.get("/speed", user.speed, CafeShop.EnchantCoffee, (req, res) => {
   res.status(200).json(res.locals.test);
 });
 

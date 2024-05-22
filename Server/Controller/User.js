@@ -1,52 +1,62 @@
 const FastSpeedtest = require("fast-speedtest-api");
 
 const user = {};
-user.speed = (req, res, next) => {
-  //   speedtest = new FastSpeedtest({
-  //     token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", // required
-  //     verbose: true, // default: false
-  //     timeout: 10000, // default: 5000
-  //     https: true, // default: true
-  //     urlCount: 5, // default: 5
-  //     bufferSize: 8, // default: 8
-  //     unit: FastSpeedtest.UNITS.Mbps, // default: Bps
-  //   });
+user.speed = async (req, res, next) => {
+  speedtest = new FastSpeedtest({
+    token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", // required
+    verbose: false, // default: false
+    timeout: 10000, // default: 5000
+    https: true, // default: true
+    urlCount: 5, // default: 5
+    bufferSize: 8, // default: 8
+    unit: FastSpeedtest.UNITS.Mbps, // default: Bps
+  });
 
-  //   speedtest
-  //     .getSpeed()
-  //     .then((s) => {
-  //       const overallSpeed = s;
-  //     //   const uploadSpeed = s.upload;
-  //     //   const downloadSpeed = s.download;
-  //       console.log(`Overall Speed: ${s} Mbps`);
-  //       res.locals.test = s;
-  //       next();
-  //     })
-  //     .catch((e) => {
-  //       console.error(e.message);
-  //       return next(e)
-  //     });
+try {
+  const speed = await speedtest.getSpeed();
+  console.log(`Overall Speed: ${speed} Mbps`);
+  let roundedSpeed = Math.floor(speed);
+  console.log(`Rounded Down Speed: ${roundedSpeed} Mbps`);
 
-//   async function runSpeedTest() {
-//     try {
-//       const response = await fetch('https://api.fast.com/netflix/speedtest', {
-//         headers: {
-//           "Fastly-Key": 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm',
-//         },
-//       });
-//       if (!response.ok) {
-//         throw new Error("Failed to initiate speed test");
-//       }
-//       const data = await response.json();
-//       res.locals.test = data;
-//       console.log("Speed test results:", data);
-//       // Process the results and display them to the user
-//       // Example: const downloadSpeed = data.download;
-//       // Example: const uploadSpeed = data.upload;
-//     } catch (error) {
-//       console.error("Error initiating speed test:", error);
-//     }
-//   } byeeeeeeeeeeeeee
+  let speedCategory;
+  if (!roundedSpeed) speedCategory = 'No Wifi';
+  else if (roundedSpeed < 30) speedCategory = 'Slow';
+  else if (roundedSpeed >= 30 && roundedSpeed < 100) speedCategory = 'Moderate';
+  else if (roundedSpeed >= 100) speedCategory = 'Fast';
+
+  res.locals.test = speedCategory;
+  next();
+} catch (error) {
+    console.error('Speed test failed:', error.message);
+
+    //error handling based on ApiError codes
+    let errorMessage = 'Error in Speed Test';
+    if (error instanceof ApiError) {
+      switch (error.code) {
+        case 'BAD_TOKEN':
+          errorMessage = 'Invalid API token';
+          break;
+        case 'UNREACHABLE_HTTPS_API':
+        case 'UNREACHABLE_HTTP_API':
+          errorMessage = 'No Internet Connection';
+          break;
+        case 'PROXY_NOT_AUTHENTICATED':
+          errorMessage = 'Failed to authenticate with proxy';
+          break;
+        case 'UNKNOWN':
+        default:
+          errorMessage = 'Unknown error occurred';
+          break;
+      }
+    } else {
+      errorMessage = error.message.includes('network') || error.message.includes('timeout') 
+        ? 'No Internet Connection' 
+        : 'Error in Speed Test';
+    }
+
+    res.locals.test = errorMessage;
+    next();
+  }
 };
 
 module.exports = user;
