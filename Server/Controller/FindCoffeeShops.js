@@ -21,7 +21,7 @@ FindCoffeeShops.findNearbyCoffeeShops = async (latitude, longitude) => {
   try {
     const response = await fetch(overpassUrl);
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error('Network response was not ok');
     }
     const data = await response.json();
     return data.elements
@@ -39,7 +39,7 @@ FindCoffeeShops.findNearbyCoffeeShops = async (latitude, longitude) => {
       }))
       .slice(0, 5); // Limit to 5 results
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Error:', error);
     throw error;
   }
 };
