@@ -1,20 +1,19 @@
-.shop-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  width: 100%;
+/* Container for the cards */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Gap between cards */
+  padding: 20px; /* Padding around the grid */
+  justify-items: center; /* Center the items horizontally */
 }
 
+/* Individual card */
 .shop-card {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
-  margin: 10px;
-  width: calc(
-    66.666% - 40px
-  ); /* Adjust width to fit one and a half cards in a row */
   box-sizing: border-box;
+  width: 100%; /* Make each card take full width of the grid column */
 }
 
 @media (max-width: 768px) {
