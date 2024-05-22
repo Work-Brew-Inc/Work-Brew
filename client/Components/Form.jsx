@@ -17,10 +17,10 @@ const Form = () => {
     console.log(formData);
   };
 
-  const handleSubmit = async (formData) => {
-    console.log('data is', formData)
-    try {  
-      const response = await axios.post('/BrewCoffee', formData);
+  const handleSubmit = async () => {
+    console.log('data is', formData);
+    try {
+      const response = await axios.post('http://localhost:3000/Brew/BrewCoffee', formData);
       console.log('Response', response.data);
     } catch (err) {
       console.log('Error in submitting form:', err);
@@ -42,7 +42,7 @@ const Form = () => {
     },
     { label: 'Price', options: ['$', '$$', '$$$', '$$$$'] },
     { label: 'Outlets', options: ['0', '1-5', '5-10', '10+'] },
-    { label: 'Ergonomics', options: ['Yes', 'No'] },
+    { label: 'Ergonomics', options: ['Poor', 'Standard', 'Comfortable'] },
     { label: 'Standing Tables', options: ['Yes', 'No'] },
     { label: 'Bathroom', options: ['Yes', 'No'] },
     { label: 'Temperature Control', options: ['Poor', 'Decent', 'Good'] },
@@ -112,7 +112,7 @@ const Form = () => {
           }}
         >
           <Button
-            sx={{ width: '50%', mt: '20px'}}
+            sx={{ width: '50%', mt: '20px' }}
             variant="contained"
             onClick={() => handleSubmit()}
           >
