@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
+import '../Styles/Login.css';
 import supabase from '../../Server/Models/model';
 
 const Login = () => {
@@ -25,8 +26,8 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Log in with GitHub</h2>
-            <button onClick={handleGitHubAuth}>Log in with GitHub</button>
+            <h2 class='login'>Log in with GitHub</h2>
+            <button class='loginButton' onClick={handleGitHubAuth}>Log in with GitHub</button>
         </div>
     );
 };
