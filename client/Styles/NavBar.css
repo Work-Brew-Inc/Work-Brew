@@ -1,0 +1,87 @@
+/* * {
+  border: 1px solid red;
+} */
+
+nav {
+  width: 100vw;
+  height: 50px;
+  /* background-color: #bea493; */
+  background-image: url('../Assets/coffee-shop-background.jpg');
+  /* background-color: rgba(255, 255, 255, 0.15); */
+  background-size: 150%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  color: #f6e8dc;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.left-nav {
+  /* border: 1px solid gray; */
+  background-color: #9f816c6b;
+  border-radius: 3px;
+  height: 40px;
+  width: 70px;
+  margin-left: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.center-nav {
+  /* border: 1px solid gray; */
+  height: 40px;
+  /* width: 40px; */
+  display: flex;
+  align-items: center;
+}
+
+.right-nav {
+  /* border: 1px solid gray; */
+  height: 40px;
+  /* width: 40px; */
+  width: 200px;
+  border-radius: 3px;
+
+  margin-right: 5px;
+  background-image: linear-gradient(to right, #be9397, #beba93);
+}
+
+.speedIndicator {
+  height: 30px;
+  width: 2px;
+  background-color: #724e32;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+/* .left-nav button {
+  height: 100%;
+  width: 100%;
+
+  border: none;
+  border-radius: 8px;
+} */
+/* .nav-background {
+  background-image: url('../Assets/coffee-shop-background.jpg');
+  background-color: rgba(255, 255, 255, 0.15);
+  background-size: 150%;
+  backdrop-filter: blur(50px);
+
+  /* border: 1px solid red; */
+/* width: 100vw;
+  height: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
