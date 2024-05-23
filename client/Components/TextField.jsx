@@ -14,7 +14,7 @@ export default function CustomText({ label, onChange }) {
     <Box
       component="form"
       sx={{
-        '& > :not(style)': { mt: '13px', width: '40ch' },
+        '& > :not(style)': { mt: '13px', width: '40ch', color: 'primary' },
       }}
       noValidate
       autoComplete="off"
