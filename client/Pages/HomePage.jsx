@@ -29,20 +29,28 @@ const HomePage = () => {
     setSearchQuery(event.target.value);
   };
 
+  const filteredShops = shops.filter((shop) =>
+    shop.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="center">
       <h1>WorkBrew</h1>
       <h3>Your favorite remote workspaces, all in one place!</h3>
-      <h4>Your Saved Locations</h4>
+      <SearchBar
+        value={searchQuery}
+        onChange={handleSearchChange}
+        sx={{ mt: '20px' }}
+      />
       <div className="cards-container">
-        {shops.map((shop) => (
+        {filteredShops.map((shop) => (
           <div
             key={shop.id}
             className="shop-card"
             onClick={() => navigate(`/shop/${shop.id}`, { state: { shop } })}
           >
-            <h4>{shop.name}</h4>
-            <p>{shop.location}</p>
+            <h4 className="shopName">{shop.name}</h4>
+            <p className="shopLocation">{shop.location}</p>
           </div>
         ))}
       </div>

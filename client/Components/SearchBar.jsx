@@ -6,14 +6,15 @@ import SearchIcon from '@mui/icons-material/Search';
 const SearchBar = ({ value, onChange }) => {
   return (
     <TextField
-      variant='outlined'
+      variant="outlined"
       fullWidth
-      placeholder='Search...'
+      placeholder="Search..."
       value={value}
       onChange={onChange}
+      sx={{ width: 480 }}
       InputProps={{
         startAdornment: (
-          <InputAdornment position='start'>
+          <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
         ),
