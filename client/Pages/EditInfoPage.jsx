@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from '../Components/Form';
 
-const FormPage = () => {
+const EditInfoPage = () => {
   return (
     <div>
       <Form />
@@ -9,4 +9,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default EditInfoPage;

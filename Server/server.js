@@ -2,10 +2,9 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
-// const cors = require("cors");
-// const supabase = require("./Models/model.js");
 //import router
 const router = require('./Routes/Route');
+const user = require('./Controller/User')
 
 // Load environment variables from .env file
 dotenv.config();
@@ -30,9 +29,6 @@ if (isDev) {
 
   app.use(express.static('../dist'));
 
-  // router to handle requests
-  app.use('/Brew', router);
-
   app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/static/index.html"));
   });
@@ -44,6 +40,11 @@ if (isDev) {
     res.sendFile(path.resolve(__dirname, "../dist/index.html"));
   });
 }
+
+  // router to handle requests
+  app.use('/Brew', router);
+
+  app.get('/auth/callback', user.authCallback);
 
 //Catch all route handler
 app.use('*', (req, res) => {
@@ -65,18 +66,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-// supabase
-//   .from("coffee_shop")
-//   .select("*")
-//   .then((response) => {
-//     if (response.error) {
-//       console.error("Error connecting to Supabase:", response.error);
-//     } else {
-//       console.log("Connected to Supabase");
-//       console.log(response.data); // Log the retrieved data
-//     }
-//   })
-//   .catch((error) => {
-//     console.error("Unexpected error:", error);
-//   });
