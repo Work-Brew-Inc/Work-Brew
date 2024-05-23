@@ -1,6 +1,48 @@
 const FastSpeedtest = require("fast-speedtest-api");
+const supabase = require("../Models/model");
 
 const user = {};
+
+user.authCallback = async (req, res, next) => {
+  console.log('authCallback');
+  const code = req.query.code;
+
+  try {
+    if (code) {
+      const supabase = createClient({ req, res });
+      await supabase.auth.exchangeCodeForSession(code);
+      
+      // Authentication succeeded, navigate to the desired location
+      res.send('Authentication successful'); // Or any other response
+    } else {
+      // Handle the case when code is not provided
+      res.status(400).send('Code not provided');
+    }
+  } catch (error) {
+    console.error('Error exchanging code for session:', error.message);
+    res.status(500).send('Authentication failed');
+  }
+};
+user.NewCustomer = async (req, res) => {
+  const { id, email, name, home_location, age, handicap } = req.body;
+
+  try {
+      const { data, error } = await supabase 
+          .from('users')
+          .insert([
+              { id, email, name, home_location, age, handicap }
+          ]);
+
+      if (error) {
+          throw error;
+      }
+
+      res.status(200).json({ message: 'User added successfully', data });
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+};
+
 user.speed = async (req, res, next) => {
   speedtest = new FastSpeedtest({
     token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", // required

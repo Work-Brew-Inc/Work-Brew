@@ -24,6 +24,10 @@ router.delete('/DumpCoffee', CafeShop.DumpCoffee, (req, res) => {
   res.status(200).send('Coffee has been dumped');
 });
 
+router.post('/NewCustomer', user.NewCustomer, (req, res) => {
+  return res.status(200);
+})
+
 router.get('/WakeMeUp', FindCoffeeShops.getUsersLocation, (req, res) => {
   res.status(200).json(res.locals.coffeeShops);
 });
