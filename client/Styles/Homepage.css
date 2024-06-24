@@ -3,7 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   height: 100vh;
+  background-color: #fcf6ee;
+}
+
+.h1 {
+  font-family: 'Playwrite US Modern', cursive;
+}
+
+h3,
+p {
+  font-family: 'Playwrite DE Grund', cursive;
 }
 
 /* Container for the cards */
@@ -22,14 +33,14 @@
 /* Individual card */
 .shop-card {
   border: 1px solid #4f2d2deb;
-  background-color: #bea493;
+  background-color: #867a67;
   border-radius: 8px;
   padding: 90px 30px;
   box-sizing: border-box;
   width: 100%; /* Make each card take full width of the grid column */
   justify-content: center;
   align-items: center;
-  max-height: 70vh;
+  max-height: 30vh;
 }
 
 .shop-card h4 {

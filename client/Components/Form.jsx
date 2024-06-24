@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import axios from 'axios';
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 import '../Styles/Form.css';
+import '../Styles/ApplytoAll.css';
 
 const Form = () => {
   const [formData, setFormData] = useState({});
@@ -139,6 +140,7 @@ const Form = () => {
           options={item.options}
           value={formData[item.label] || ''}
           onChange={(value) => handleChange(item.label, value)}
+          
         />
       );
     } else {
