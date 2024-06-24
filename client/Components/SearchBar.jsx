@@ -11,7 +11,15 @@ const SearchBar = ({ value, onChange }) => {
       placeholder="Search..."
       value={value}
       onChange={onChange}
-      sx={{ width: 480 }}
+      sx={{
+        width: 480,
+        '& .MuiInputBase-input::placeholder': {
+          fontFamily: '"Playwrite DE Grund", cursive',
+        },
+        '& .MuiInputBase-input': {
+          fontFamily: '"Playwrite DE Grund", cursive',
+        },
+      }}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

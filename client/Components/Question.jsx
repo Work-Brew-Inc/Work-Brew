@@ -16,18 +16,30 @@ export default function Question({ label, options, value, onChange }) {
   };
 
   return (
-    <Box sx={{ width: '40ch', mt: '15px'}}>
+    <Box sx={{ width: '40ch', mt: '15px' }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel
+          sx={{
+              fontFamily: '"Playwrite DE Grund", cursive',
+            }}
+          id="demo-simple-select-label"
+        >
+          {label}
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={displayText}
           label={label}
           onChange={handleChange}
+          sx={{
+            fontFamily: '"Playwrite DE Grund", cursive',
+          }}
         >
           {options.map((option, index) => (
-            <MenuItem key={index} value={option}>
+            <MenuItem key={index} value={option} sx={{
+              fontFamily: '"Playwrite DE Grund", cursive',
+            }}>
               {option}
             </MenuItem>
           ))}

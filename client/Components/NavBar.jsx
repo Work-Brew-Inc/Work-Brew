@@ -13,13 +13,6 @@ export default function Nav() {
   return (
     <>
       <nav>
-        {/* <div className="nav-background"> */}
-
-        {/* <a href="/">
-          <div className="left-nav">
-            <CoffeeTwoToneIcon />
-          </div>
-        </a> */}
         <div className="left-nav">
           {/* <button onClick={() => navigate(`/shop/${shop.id}`, { state: { shop } })}></button>  */}
           <HomeTwoToneIcon onClick={() => navigate(`/`)} />
@@ -32,10 +25,9 @@ export default function Nav() {
               <img src="../Assets/coffee_logo.png" />
             </div> */}
         </div>
-        {/* <div className="right-nav">
-          <div className="speedIndicator"></div>
-        </div> */}
-        {/* </div> */}
+        <div className="right-nav">
+          <p>Contact Us</p>
+        </div>
       </nav>
     </>
   );

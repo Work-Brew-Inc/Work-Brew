@@ -6,8 +6,10 @@ nav {
   width: 100vw;
   height: 50px;
   /* background-color: #bea493; */
-  background-image: url('../Assets/coffee-shop-background.jpg');
-  /* background-color: rgba(255, 255, 255, 0.15); */
+  /* background-image: url('../Assets/coffee-shop-background.jpg'); */
+  /* background-color: rgb(189, 164, 148); */
+  /* background-color: #84d8ff; */
+  background-color: #94d0eb;
   background-size: 150%;
 
   display: flex;
@@ -29,7 +31,7 @@ a {
   background-color: #9f816c6b;
   border-radius: 3px;
   height: 40px;
-  width: 70px;
+  width: 150px;
   margin-left: 5px;
 
   display: flex;
@@ -46,14 +48,16 @@ a {
 }
 
 .right-nav {
-  /* border: 1px solid gray; */
   height: 40px;
-  /* width: 40px; */
   width: 200px;
-  border-radius: 3px;
-
-  margin-right: 5px;
-  background-image: linear-gradient(to right, #be9397, #beba93);
+  /* margin-right: 5px; */
+  /* background-image: linear-gradient(to right, #be9397, #beba93); */
+  align-items: center;
+  justify-content: center;
+  p {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .speedIndicator {

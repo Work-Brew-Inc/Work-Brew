@@ -4,6 +4,7 @@ import '../Styles/Homepage.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../Components/SearchBar';
+import '../Styles/ApplytoAll.css';
 
 const HomePage = () => {
   const [shops, setShops] = useState([]);

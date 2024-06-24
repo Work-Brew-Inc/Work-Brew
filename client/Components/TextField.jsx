@@ -25,6 +25,11 @@ export default function CustomText({ label, onChange }) {
         label={label}
         variant="outlined"
         onChange={handleChange}
+        sx={{
+          '& .MuiInputLabel-root': {
+            fontFamily: '"Playwrite DE Grund", cursive',
+          },
+        }}
       />
     </Box>
   );
